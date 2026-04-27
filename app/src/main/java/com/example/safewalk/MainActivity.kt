@@ -1,20 +1,30 @@
 package com.example.safewalk
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.cardview.widget.CardView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Pastikan nama ID di sini (btnPanic, dll) sama persis dengan yang ada di XML tadi
+        val btnPanic = findViewById<CardView>(R.id.btnPanic)
+        val cardTracking = findViewById<CardView>(R.id.cardTracking)
+        val cardContacts = findViewById<CardView>(R.id.cardContacts)
+
+        btnPanic.setOnClickListener {
+            Toast.makeText(this, "Sinyal SOS Terkirim!", Toast.LENGTH_SHORT).show()
+        }
+
+        cardTracking.setOnClickListener {
+            Toast.makeText(this, "Membuka Peta Pelacakan...", Toast.LENGTH_SHORT).show()
+        }
+
+        cardContacts.setOnClickListener {
+            Toast.makeText(this, "Membuka Daftar Kontak...", Toast.LENGTH_SHORT).show()
         }
     }
 }
